@@ -10,9 +10,9 @@ class Tag(models.Model):
 
 class Task(models.Model):
     content = models.TextField()
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(null=True)
     deadline = models.DateTimeField(null=True, blank=True)
-    is_completed = models.BooleanField()
+    is_completed = models.BooleanField(null=True)
     tags = models.ManyToManyField(Tag, related_name="tasks")
 
     class Meta:
