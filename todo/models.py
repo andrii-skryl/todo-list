@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
@@ -10,7 +10,10 @@ class Tag(models.Model):
 
 class Task(models.Model):
     content = models.TextField()
-    datetime = models.DateTimeField()
+    created_at = models.DateTimeField(null=True)
     deadline = models.DateTimeField(null=True, blank=True)
-    status = models.BooleanField()
+    is_completed = models.BooleanField(null=True)
     tags = models.ManyToManyField(Tag, related_name="tasks")
+
+    class Meta:
+        ordering = ["is_completed", "created_at"]
