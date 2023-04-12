@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.views import generic, View
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 
 from todo.models import Task, Tag
 
